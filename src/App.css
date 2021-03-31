@@ -12,6 +12,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.background {
+  background-color: #83c5be;
+}
 
 .App-header {
   background-color: #282c34;
@@ -35,4 +38,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+/*  */
+
+.card-view {
+  margin-top: 75px;
+  margin-left: 270px;
+  justify-content: center;
+}
+
+.cb {
+  padding: 1.25rem;
+  align-self: center;
+}
+button.btn.btn-secondary {
+  background-color: #111111;
+  width: 80px;
+}
+
+tbody {
+  background-color: #f7eaea;
+}
+th {
+  background-color: #006d77;
+  color: white;
+}
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #0a0a0a;
 }

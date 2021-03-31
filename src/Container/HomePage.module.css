@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.MainDiv {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px auto 0 auto;
+  margin-top: 100px;
+}
+
+.MainCard {
+  margin-top: 100px;
+  margin-left: 20px;
+  width: 300px;
+  height: 320px;
+
+  box-shadow: 0px 2px 30px #ccc;
+  cursor: pointer;
+}
+
+.BanImg {
+  width: 300px;
+  height: 170px;
+}
+
+.Title {
+  margin-left: 25px;
+  color: rgb(247, 236, 236);
+  font-weight: 600;
+}
+
+.linkDesign {
+  text-decoration: none;
+}
+.MainCard {
+  background-color: #006d77;
+}

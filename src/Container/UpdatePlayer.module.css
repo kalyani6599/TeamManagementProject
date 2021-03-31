@@ -1,14 +1,14 @@
 .MainPage {
   height: 100%;
-  background-color: #8cb1a4;
+  /* //background-color: #8cb1a4; */
 }
 
 .Login {
   width: 100%;
   margin-top: 100px;
-  max-width: 400px;
+  max-width: 450px;
 
-  height: 450px;
+  height: 650px;
 
   border-radius: 6px;
   border: 2px solid #8dc5b1;
@@ -66,7 +66,7 @@
   width: 150px;
   border-radius: 30px;
 
-  padding: 16px36px;
+  padding: 5px;
 
   font-size: 15px;
 
@@ -86,7 +86,14 @@
 
   align-self: center;
 
-  height: 40px;
+  height: 55px;
 
-  margin-top: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.Title {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 200;
+  border: 2px solid rgb(40, 129, 95);
 }

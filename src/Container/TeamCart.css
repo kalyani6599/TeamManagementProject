@@ -1,0 +1,129 @@
+/* .card {
+  display: inline-block;
+}*/
+.b1 {
+  width: 100px;
+  margin-left: 90px;
+  background-color: #272b73;
+  font-size: 20px;
+  font-weight: 700;
+  color: cornsilk;
+}
+.cards {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.card {
+  flex: 0 0 250px;
+  padding: 2px;
+  margin: 15px;
+  border: 1px solid rgb(15, 14, 14);
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+img.card-img-top.img {
+  height: 200px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #188665;
+  border-color: #10151b;
+}
+
+/* Header CSS */
+/* 
+button.btn.btn-secondary {
+  background-color: #212529;
+  width: 80px;
+}
+input.form-control {
+  border: 2px solid #0b0c0c;
+  border-radius: 10px;
+}
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 97%;
+  height: 120px;
+  background-color: rgb(131, 185, 144);
+  position: fixed;
+}
+
+.child2 {
+  flex: auto;
+  padding: 2px;
+  margin: 15px;
+  margin-left: 50px;
+}
+
+.child3 {
+  flex: 0 0 250px;
+  padding: 2px;
+  margin: 15px;
+  margin-right: 50px;
+}
+.child1 {
+  flex: 0 0 500px;
+  padding: 2px;
+  margin: 15px;
+  margin: inherit;
+  margin-left: 200px;
+}
+
+.Button {
+  display: inline-block;
+
+  width: 150px;
+  border-radius: 25px;
+
+  padding: 16px36px;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  background-color: #1d2124;
+
+  color: white;
+
+  border: none;
+
+  outline: none;
+
+  cursor: pointer;
+
+  align-self: center;
+
+  margin-left: 50px;
+  height: 50px;
+
+  margin-top: 24px;
+}
+/* .header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+.InputField1 {
+  width: 100%;
+
+  padding-top: 18px;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+
+  margin-top: 2px;
+
+  border: 1.5px solid #141111;
+
+  margin-bottom: 16px;
+
+  outline: none;
+
+  border-radius: 1px;
+} */
