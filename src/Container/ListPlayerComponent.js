@@ -8,13 +8,15 @@ class ListPlayerComponent extends React.Component {
 
     this.state = {
       players: [],
+      // url: "",
     };
 
-    this.addplayer = this.addplayer.bind(this);
+    //   this.addplayer = this.addplayer.bind(this);
     this.editplayer = this.editplayer.bind(this);
     this.deleteplayer = this.deleteplayer.bind(this);
     this.viewplayer = this.viewplayer.bind(this);
-    this.download = this.download.bind(this);
+    this.downloadPhoto = this.downloadPhoto.bind(this);
+    this.uploadPhoto = this.uploadPhoto.bind(this);
   }
 
   componentDidMount() {
@@ -23,25 +25,37 @@ class ListPlayerComponent extends React.Component {
     });
   }
 
-  uploadPhoto(playerId) {
-    PlayerService.uploadPhoto(playerId).then((res) => {
-      // alert("Photo Uploaded Successfully ;)");
-      this.props.history.push(`/upload-photo/${playerId}`);
+  downloadPhoto(playerId) {
+    PlayerService.downloadPhoto(playerId).then((res) => {
+      // this.setState({
+      //   players: this.state.players.filter(
+      //     (player) => player.playerId !== playerId,
+      alert("Downloaded");
+      //   ),
+      // });
+      this.props.history.push(`/download-player/${playerId}`);
     });
   }
-  addplayer(id) {
-    this.props.history.push(`/add-player/${id}`);
+
+  uploadPhoto(playerId) {
+    // PlayerService.uploadPhoto(playerId).then((res) => {
+    // alert("Photo Uploaded Successfully ;)");
+    this.props.history.push(`/upload-photo/${playerId}`);
+    // });
   }
+  // addplayer(id) {
+  //   this.props.history.push(`/add-player/${id}`);
+  // }
 
   editplayer(playerId) {
     this.props.history.push(`/update-player/${playerId}`);
   }
 
-  download(playerId) {
-    PlayerService.downloadPhoto(playerId).then((res) => {
-      alert("Downloaded-----");
-    });
-  }
+  // download(playerId) {
+  //   PlayerService.downloadPhoto(playerId).then((res) => {
+  //     alert("Downloaded-----");
+  //   });
+  // }
   deleteplayer(playerId) {
     PlayerService.deletePlayer(playerId).then((res) => {
       this.setState({
@@ -89,7 +103,7 @@ class ListPlayerComponent extends React.Component {
                   <td>{player.teamName}</td>
                   <td>{player.status}</td>
                   <td>{player.description}</td>
-                  <td>{player.photos}</td>
+                  <td onClick={this.downloadPhoto}>{player.photos}</td>
                   <td>
                     <button
                       onClick={() => this.editplayer(player.playerId)}

@@ -88,8 +88,10 @@ class UpdatePlayerComponent extends Component {
       description: this.state.description,
     };
 
-    PlayerService.updatePlayer(player, this.state.playerId).then((res) => {
-      alert("Player Added Successful");
+    PlayerService.updatePlayer(this.state.playerId, player).then((res) => {
+      alert("Player Updated Successful");
+      player = res.data;
+      console.log(player);
       this.props.history.push("/playerInfo");
     });
   };
@@ -158,8 +160,8 @@ class UpdatePlayerComponent extends Component {
                 onChange={this.ChangeStatushandler}
               >
                 {/* <option></option> */}
-                <option>On Bench</option>
-                <option>Playing</option>
+                <option value="ON_BENCH">On Bench</option>
+                <option value="PLAYING">Playing</option>
               </select>
             </FormGroup>
 
@@ -182,6 +184,7 @@ class UpdatePlayerComponent extends Component {
               className={classes.Button}
               type="submit"
               value="Update player"
+              onClick={this.OnUpdateClick}
             />
           </form>
         </div>

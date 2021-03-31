@@ -6,20 +6,35 @@ class UploadPhotoComponent extends Component {
     super(props);
 
     this.state = {
-      file: "",
+      playerId: this.props.match.params.playerId,
+      newfile: "",
     };
+
+    this.onclickUpload = this.onclickUpload.bind(this);
+    this.onFileChangeHandler = this.onFileChangeHandler.bind(this);
   }
-  onFileChangeHandler = (e) => {
-    e.preventDefault();
-    this.setState({
-      file: e.target.value,
-    });
-    PlayerService.uploadPhoto().then((res) => {
+
+  onclickUpload = (e) => {
+    alert("File uploaded successfully.");
+    const file = new FormData();
+    file.append("file", this.state.newfile);
+    for (var fd of file) {
+      console.log(fd);
+    }
+    PlayerService.uploadPhoto(this.state.playerId, file).then((res) => {
       if (res.ok) {
-        console.log(res.data);
+        console.log(file);
         alert("File uploaded successfully.");
       }
     });
+  };
+  onFileChangeHandler = (e) => {
+    e.preventDefault();
+    this.setState({
+      newfile: e.target.files[0],
+    });
+    console.log(this.state.file);
+    console.log(e.target);
   };
   render() {
     return (
@@ -32,9 +47,10 @@ class UploadPhotoComponent extends Component {
                 <input
                   type="file"
                   className="form-control"
-                  name="file"
+                  name="file1"
                   onChange={this.onFileChangeHandler}
                 />
+                <button onClick={this.onclickUpload}>Upload</button>
               </div>
             </div>
           </div>

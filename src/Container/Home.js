@@ -16,6 +16,7 @@ class Home extends React.Component {
       players: [],
       teamName: "",
       description: "",
+      id: "",
     };
 
     this.onclickShowPlayer = this.onclickShowPlayer.bind(this);
@@ -55,7 +56,7 @@ class Home extends React.Component {
   };
 
   onclickAddPlayer = (e) => {
-    this.props.history.push("/add-player");
+    this.props.history.push(`/add-player/${this.state.id}`);
   };
   onclickShowPlayer = (e) => {
     this.props.history.push("/playerInfo");

@@ -2,7 +2,7 @@ import Register from "./Container/Register";
 import Login from "./Container/Login";
 import Home from "./Container/Home";
 import "./App.css";
-
+import DownloadPlayerComponent from "./Container/DownloadPlayerComponent";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ListPlayerComponent from "./Container/ListPlayerComponent";
 import AddPlayerComponent from "./Container/AddPlayerComponent";
@@ -30,7 +30,7 @@ function App() {
             component={AddPlayerComponent}
           />
           <Route
-            path="/upload-photo"
+            path="/upload-photo/:playerId"
             exact={true}
             component={UploadPhotoComponent}
           />
@@ -54,7 +54,6 @@ function App() {
             exact={true}
             component={TeamSearchList}
           />
-
           <Route
             path="/search-by-lastname/:playerLastName"
             exact={true}
@@ -64,6 +63,11 @@ function App() {
             path="/search-by-description/:description"
             exact={true}
             component={DescriptionSearchList}
+          />
+          <Route
+            path="/download-player/:playerId"
+            exact={true}
+            component={DownloadPlayerComponent}
           />
         </Switch>
       </div>

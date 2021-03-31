@@ -1,10 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import classes from "../Container/Register.module.css";
+import classes from "../Container/AddPlayer.module.css";
 import { FormGroup } from "react-bootstrap";
-import { label } from "bootstrap";
+
 import PlayerService from "../Service/PlayerService";
-import { ReactDOM } from "react-dom";
 
 class AddPlayerComponent extends React.Component {
   constructor(props) {
@@ -18,7 +17,7 @@ class AddPlayerComponent extends React.Component {
       teamName: "",
       status: "",
       description: "",
-      id: "",
+      id: this.props.match.params.id,
       //  id: this.props.match.params.id,
     };
 
@@ -77,15 +76,16 @@ class AddPlayerComponent extends React.Component {
     e.preventDefault();
 
     let player = {
-      playerId: null,
+      playerId: this.state.playerId,
       playerFirstName: this.state.playerFirstName,
       playerLastName: this.state.playerLastName,
       price: this.state.price,
       teamName: this.state.teamName,
       status: this.state.status,
       description: this.state.description,
-      id: this.state.id,
+      id: this.props.match.params.id,
     };
+    console.log(player);
 
     PlayerService.addPlayer(this.state.id, player).then((res) => {
       alert("Player Added Successful");
@@ -160,8 +160,8 @@ class AddPlayerComponent extends React.Component {
               onChange={this.ChangeStatushandler}
             >
               <option></option>
-              <option>On Bench</option>
-              <option>Playing</option>
+              <option value="ON_BENCH">On Bench</option>
+              <option value="PLAYING">Playing</option>
             </select>
           </FormGroup>
 
@@ -174,13 +174,18 @@ class AddPlayerComponent extends React.Component {
               onChange={this.Changedescriptionhandler}
             >
               <option></option>
-              <option>All Rounder</option>
-              <option>Bowler</option>
-              <option>Batsman</option>
+              <option value="ALL_ROUNDER">All Rounder</option>
+              <option value="BOWLER">Bowler</option>
+              <option value="BATSMAN">Batsman</option>
             </select>
           </FormGroup>
 
-          <input className={classes.Button} type="submit" value="Add player" />
+          <input
+            className={classes.Button}
+            type="submit"
+            value="Add player"
+            onClick={this.OnAddClick}
+          />
         </form>
       </div>
     );
