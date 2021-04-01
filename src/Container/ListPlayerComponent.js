@@ -1,7 +1,8 @@
 import React from "react";
 import PlayerService from "../Service/PlayerService";
 import "../App.css";
-
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import Header from "./../Component/Header";
 class ListPlayerComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -72,80 +73,98 @@ class ListPlayerComponent extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h2 className="text-center mt-4">Player List</h2>
-        <div className="form-group"></div>
-        <div className="row">
-          <table className="table table-striped table-bordered table-color">
-            <thead>
-              <tr>
-                <th>Player Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Price(in Cr)</th>
-                <th>Team Name</th>
-                <th>Player Status</th>
-                <th>Description</th>
-                <th>Photo</th>
-                <th colSpan="4" style={{ textAlign: "center" }}>
-                  Actions
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {this.state.players.map((player) => (
-                <tr key={player.playerId}>
-                  <td>{player.playerId}</td>
-                  <td>{player.playerFirstName}</td>
-                  <td>{player.playerLastName}</td>
-                  <td>{player.price}</td>
-                  <td>{player.teamName}</td>
-                  <td>{player.status}</td>
-                  <td>{player.description}</td>
-                  <td onClick={this.downloadPhoto}>{player.photos}</td>
-                  <td>
-                    <button
-                      onClick={() => this.editplayer(player.playerId)}
-                      className="btn btn-info"
-                    >
-                      Edit
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      style={{ marginLeft: "10px" }}
-                      onClick={() => this.deleteplayer(player.playerId)}
-                      className="btn btn-danger"
-                    >
-                      Delete
-                    </button>
-                  </td>
-
-                  <td>
-                    <button
-                      style={{ marginLeft: "10px" }}
-                      onClick={() => this.viewplayer(player.playerId)}
-                      className="btn btn-info"
-                    >
-                      View
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      style={{ marginLeft: "10px" }}
-                      onClick={() => this.uploadPhoto(player.playerId)}
-                      className="btn btn-info"
-                    >
-                      Upload photo
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <>
+        <div>
+          <Header />
         </div>
-      </div>
+        <div className="container">
+          <div className="tablestyle">
+            <h2 className="text-center mt-4">Player List</h2>
+            <ReactHTMLTableToExcel
+              className="btn btn-info"
+              table="tbname"
+              filename="ReportExcel"
+              sheet="Sheet"
+              id="Export"
+              buttonText="Export excel"
+            />
+            <div className="form-group"></div>
+            <div className="row">
+              <table
+                id="tbname"
+                className="table table-striped table-bordered table-color"
+              >
+                <thead>
+                  <tr>
+                    <th>Player Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Price(in Cr)</th>
+                    <th>Team Name</th>
+                    <th>Player Status</th>
+                    <th>Description</th>
+                    <th>Photo</th>
+                    <th colSpan="4" style={{ textAlign: "center" }}>
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {this.state.players.map((player) => (
+                    <tr key={player.playerId}>
+                      <td>{player.playerId}</td>
+                      <td>{player.playerFirstName}</td>
+                      <td>{player.playerLastName}</td>
+                      <td>{player.price}</td>
+                      <td>{player.teamName}</td>
+                      <td>{player.status}</td>
+                      <td>{player.description}</td>
+                      <td onClick={this.downloadPhoto}>{player.photos}</td>
+                      <td>
+                        <button
+                          onClick={() => this.editplayer(player.playerId)}
+                          className="btn btn-info"
+                        >
+                          Edit
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          style={{ marginLeft: "10px" }}
+                          onClick={() => this.deleteplayer(player.playerId)}
+                          className="btn btn-danger"
+                        >
+                          Delete
+                        </button>
+                      </td>
+
+                      <td>
+                        <button
+                          style={{ marginLeft: "10px" }}
+                          onClick={() => this.viewplayer(player.playerId)}
+                          className="btn btn-info"
+                        >
+                          View
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          style={{ marginLeft: "10px" }}
+                          onClick={() => this.uploadPhoto(player.playerId)}
+                          className="btn btn-info"
+                        >
+                          Upload photo
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }

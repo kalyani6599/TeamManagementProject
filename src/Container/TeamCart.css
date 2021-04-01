@@ -4,10 +4,16 @@
 .b1 {
   width: 100px;
   margin-left: 90px;
-  background-color: #272b73;
+  background-color: #0d0d0e;
   font-size: 20px;
   font-weight: 700;
-  color: cornsilk;
+  outline: none;
+
+  cursor: pointer;
+
+  border-radius: 25px;
+  border: 1px solid white;
+  color: rgb(248, 247, 242);
 }
 .cards {
   margin-top: 100px;
@@ -28,7 +34,7 @@ img.card-img-top.img {
 .btn-primary {
   color: #fff;
   background-color: #188665;
-  border-color: #10151b;
+  border-color: #0c0c0e;
 }
 
 /* Header CSS */

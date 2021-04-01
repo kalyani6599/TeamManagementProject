@@ -7,6 +7,7 @@ import TeamCard from "./TeamCard";
 import Header from "../Component/Header";
 import TeamSearchList from "./TeamSearchList";
 import "../App.css";
+import Footer from "../Component/Footer";
 
 class Home extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Home extends React.Component {
     this.onclickAddPlayer = this.onclickAddPlayer.bind(this);
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.searchButton = this.searchButton.bind(this);
+    //this.onClickShowStatistics=this.onClickShowStatistics.bind(this);
     this.searchTeam = this.searchTeam.bind(this);
   }
 
@@ -63,13 +65,16 @@ class Home extends React.Component {
   };
   render() {
     return (
-      <div>
-        <Header
-          addEvent={this.onclickAddPlayer}
-          ShowEvent={this.onclickShowPlayer}
-          search={this.onChangeSearch}
-          searchButtonClick={this.searchButton}
-        />
+      <>
+        <div className="container-fluid">
+          <Header
+            addEvent={this.onclickAddPlayer}
+            ShowEvent={this.onclickShowPlayer}
+            //   ShowStatistic={this.onClickShowStatistics}
+            search={this.onChangeSearch}
+            searchButtonClick={this.searchButton}
+          />
+        </div>
         <div className="row">
           {/* <TeamCard searchTeam={this.OnClicksearchTeam} /> */}
           {/* <HomePage /> */}
@@ -94,7 +99,10 @@ class Home extends React.Component {
             })}
           </div>
         </div>
-      </div>
+        <div style={{ marginTop: "-150px" }}>
+          <Footer />
+        </div>
+      </>
     );
   }
 }

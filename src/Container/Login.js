@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "../Container/Login.module.css";
 import RegisterService from "../Service/RegisterService";
-
+import Footer from "./../Component/Footer";
 class Login extends React.Component {
   userData;
   constructor(props) {
@@ -85,12 +85,14 @@ class Login extends React.Component {
 
               <div className="col-md-6">
                 <img
-                  classname={classes.img}
+                  style={{ height: "75%" }}
+                  classname={classes.Image}
                   src="https://www.insidesport.co/wp-content/uploads/2019/12/Banner.jpg"
                 />
               </div>
             </div>
           </div>
+          <Footer />
         </div>
       </>
     );

@@ -4,12 +4,18 @@ import classes from "../Component/Header.module.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { hashHistory } from "react-router-dom";
 import { ReactDOM } from "react-dom";
+import Statistics from "./Statistics";
+import { Link } from "react-router-dom";
+import Clock from "react-digital-clock";
 class Header extends React.Component {
   render() {
     return (
       <div className={classes.parent}>
         <div className={classes.header}>
           <div className={classes.child1}>
+            <Clock />
+          </div>
+          <div className={classes.child5}>
             <div className="input-group">
               <input
                 type="text"
@@ -44,6 +50,27 @@ class Header extends React.Component {
               onClick={this.props.ShowEvent}
             />
           </div>
+
+          <div className={classes.child4}>
+            <Link to="/show-statistic">
+              <input
+                className={classes.Button}
+                type="button"
+                value="Statistics"
+                // onClick={this.props.ShowStatistic}
+              />
+            </Link>
+          </div>
+          {/* <div className={classes.child6}>
+            <Link to="/show-statistic">
+              <input
+                className={classes.Button}
+                type="button"
+                value="Statistics"
+                // onClick={this.props.ShowStatistic}
+              />
+            </Link>
+          </div> */}
         </div>
       </div>
     );

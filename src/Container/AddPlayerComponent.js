@@ -85,6 +85,7 @@ class AddPlayerComponent extends React.Component {
       description: this.state.description,
       id: this.props.match.params.id,
     };
+
     console.log(player);
 
     PlayerService.addPlayer(this.state.id, player).then((res) => {

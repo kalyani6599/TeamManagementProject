@@ -11,10 +11,11 @@ import ViewPlayerComponent from "./Container/ViewPlayerComponent";
 import UpdatePlayerComponent from "./Container/UpdatePlayerComponent";
 import TeamSearchList from "./Container/TeamSearchList";
 import DescriptionSearchList from "./Container/DescriptionSearchList";
+import Statistics from "./Component/Statistics";
 function App() {
   return (
     <BrowserRouter>
-      <div className="container-fluid background">
+      <div className="background">
         <Switch>
           <Route path="/" exact={true} component={Register} />
           <Route path="/login" exact={true} component={Login} />
@@ -69,6 +70,7 @@ function App() {
             exact={true}
             component={DownloadPlayerComponent}
           />
+          <Route path="/show-statistic" exact={true} component={Statistics} />
         </Switch>
       </div>
     </BrowserRouter>

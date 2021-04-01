@@ -10,7 +10,7 @@ class PlayerService {
     return axios.get(BASE_URL + "/player/searchById/" + playerId);
   }
   addPlayer(id, player) {
-    return axios.post(BASE_URL + "/player" + id, player);
+    return axios.post(BASE_URL + "/player/" + id, player);
   }
   deletePlayer(playerId) {
     return axios.delete(BASE_URL + "/player/delete/" + playerId);

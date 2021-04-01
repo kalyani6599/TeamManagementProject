@@ -7,13 +7,18 @@
 
 .head {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 5px;
+  background-color: #0c0c0c;
+  color: white;
+  padding: 20px;
 }
 
-.img {
-  width: 80%;
-  height: 100%;
+.Image {
+  width: 90%;
+  height: 400px;
+  display: block;
   border: 1px solid white;
+  box-shadow: 10px 10px 6px rgb(179, 174, 174);
 }
 .Login {
   width: 100%;

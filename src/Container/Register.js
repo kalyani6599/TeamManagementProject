@@ -20,6 +20,15 @@ class Register extends React.Component {
     this.ChangePasswordHandler = this.ChangePasswordHandler.bind(this);
   }
 
+  // componentDidMount() {
+  //   if (this.props.location.user) {
+  //     this.setState({
+  //       id: this.props.location.user.id,
+  //     });
+  //     console.log(this.state.userId);
+  //   }
+  // }
+
   ChangeNameHandler = (e) => {
     this.setState({
       userName: e.target.value,
@@ -47,18 +56,20 @@ class Register extends React.Component {
   onRegisterClick = (e) => {
     e.preventDefault();
     let user = {
-      id: null,
+      id: this.state.userId,
       userName: this.state.userName,
       emailId: this.state.emailId,
       phone: this.state.phone,
       password: this.state.password,
     };
+    console.log(user);
 
     RegisterService.signUp(user).then((res) => {
       alert("Register Successful!");
 
       this.props.history.push("/login");
       console.log(JSON.stringify(user));
+      console.log(user);
 
       this.setState({
         id: "",
