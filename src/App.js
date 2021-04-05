@@ -12,6 +12,7 @@ import UpdatePlayerComponent from "./Container/UpdatePlayerComponent";
 import TeamSearchList from "./Container/TeamSearchList";
 import DescriptionSearchList from "./Container/DescriptionSearchList";
 import Statistics from "./Component/Statistics";
+import Profile from "./Container/Profile";
 function App() {
   return (
     <BrowserRouter>
@@ -19,14 +20,14 @@ function App() {
         <Switch>
           <Route path="/" exact={true} component={Register} />
           <Route path="/login" exact={true} component={Login} />
-          <Route path="/home" exact={true} component={Home} />
+          <Route path="/home/:emailId" exact={true} component={Home} />
           <Route
             path="/playerInfo"
             exact={true}
             component={ListPlayerComponent}
           />
           <Route
-            path="/add-player/:id"
+            path="/add-player"
             exact={true}
             component={AddPlayerComponent}
           />
@@ -71,6 +72,11 @@ function App() {
             component={DownloadPlayerComponent}
           />
           <Route path="/show-statistic" exact={true} component={Statistics} />
+          <Route
+            path="/show-profile/:emailId"
+            exact={true}
+            component={Profile}
+          />
         </Switch>
       </div>
     </BrowserRouter>

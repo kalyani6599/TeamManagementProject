@@ -6,12 +6,12 @@ class SearchBar extends Component {
     return (
       <>
         <div className={classes.header}>
-          <div className={classes.child1}>
+          <div className={classes.childSearch}>
             <div className="input-group">
               <input
                 type="text"
                 className="form-control"
-                placeholder="Search this blog"
+                placeholder="Search BY First Name"
                 onChange={this.props.SearchChange}
               />
               <div className="input-group-append">

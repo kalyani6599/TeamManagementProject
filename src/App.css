@@ -43,8 +43,10 @@
 
 .card-view {
   margin-top: 75px;
-  margin-left: 270px;
+  width: 700px;
+  margin-left: 400px;
   justify-content: center;
+  /* border: 2px solid black; */
 }
 
 .cb {
@@ -66,4 +68,8 @@ th {
 .table-bordered td,
 .table-bordered th {
   border: 1px solid #0a0a0a;
+}
+
+.topbar {
+  width: 600px;
 }

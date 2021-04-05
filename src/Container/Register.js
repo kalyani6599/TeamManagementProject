@@ -7,7 +7,7 @@ class Register extends React.Component {
     super(props);
 
     this.state = {
-      id: "",
+      userId: "",
       userName: "",
       emailId: "",
       phone: "",
@@ -18,16 +18,16 @@ class Register extends React.Component {
     this.ChangeEmailHandler = this.ChangeEmailHandler.bind(this);
     this.ChangePhoneHandler = this.ChangePhoneHandler.bind(this);
     this.ChangePasswordHandler = this.ChangePasswordHandler.bind(this);
+    this.onRegisterClick = this.onRegisterClick.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (this.props.location.user) {
-  //     this.setState({
-  //       id: this.props.location.user.id,
-  //     });
-  //     console.log(this.state.userId);
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.location.user) {
+      this.setState({
+        userId: this.props.location.user.userId,
+      });
+    }
+  }
 
   ChangeNameHandler = (e) => {
     this.setState({
@@ -56,7 +56,7 @@ class Register extends React.Component {
   onRegisterClick = (e) => {
     e.preventDefault();
     let user = {
-      id: this.state.userId,
+      userId: this.state.userId,
       userName: this.state.userName,
       emailId: this.state.emailId,
       phone: this.state.phone,
@@ -64,21 +64,17 @@ class Register extends React.Component {
     };
     console.log(user);
 
-    RegisterService.signUp(user).then((res) => {
-      alert("Register Successful!");
+    RegisterService.signUp(user)
+      .then((res) => {
+        alert("Register Successful!");
 
-      this.props.history.push("/login");
-      console.log(JSON.stringify(user));
-      console.log(user);
-
-      this.setState({
-        id: "",
-        userName: "",
-        emailId: "",
-        phone: "",
-        password: "",
+        this.props.history.push("/login");
+        console.log(JSON.stringify(user));
+        console.log(user);
+      })
+      .catch((res) => {
+        alert("Incorrect Credentials :(");
       });
-    });
   };
 
   render() {

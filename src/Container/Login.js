@@ -16,6 +16,14 @@ class Login extends React.Component {
     this.onChangeMailHandler = this.onChangeMailHandler.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.location.user) {
+      this.setState({
+        emailId: this.props.location.user.emailId,
+      });
+    }
+  }
+
   onChangeMailHandler = (e) => {
     this.setState({
       emailId: e.target.value,
@@ -39,7 +47,7 @@ class Login extends React.Component {
     RegisterService.signIn(login)
       .then((res) => {
         alert("Login Successful");
-        this.props.history.push("/home");
+        this.props.history.push(`/home/${this.state.emailId}`);
         console.log(JSON.stringify(login));
       })
       .catch((res) => {

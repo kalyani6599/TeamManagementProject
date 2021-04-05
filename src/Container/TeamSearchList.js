@@ -18,7 +18,6 @@ class TeamSearchList extends Component {
     this.deleteplayer = this.deleteplayer.bind(this);
     this.viewplayer = this.viewplayer.bind(this);
     this.download = this.download.bind(this);
-    // this.onClickSearchName = this.onClickSearchName.bind(this);
     this.onClickSearchName = this.onClickSearchName.bind(this);
   }
 
@@ -30,22 +29,6 @@ class TeamSearchList extends Component {
         ),
       });
     });
-
-    PlayerService.searchByFirstName(this.state.playerFirstName).then((res) => {
-      this.setState({
-        players: res.data.filter(
-          (player) => player.playerFirstName === this.state.playerFirstName
-        ),
-      });
-    });
-
-    // PlayerService.searchByLastName(this.state.playerLastName).then((res) => {
-    //   this.setState({
-    //     players: res.data.filter(
-    //       (player) => player.playerLastName === this.state.playerLastName
-    //     ),
-    //   });
-    // });
   }
 
   onClickSearchName = (e) => {
@@ -54,7 +37,13 @@ class TeamSearchList extends Component {
       `/search-by-firstname/${this.state.playerFirstName}`
     );
 
-    // this.props.history.push(`/search-by-lastname/${this.state.playerLastName}`);
+    PlayerService.searchByFirstName(this.state.playerFirstName).then((res) => {
+      this.setState({
+        players: res.data.filter(
+          (player) => player.playerFirstName === this.state.playerFirstName
+        ),
+      });
+    });
   };
 
   onChangeSearch = (e) => {

@@ -1,8 +1,6 @@
 import React from "react";
-import { render } from "@testing-library/react";
 import classes from "../Container/AddPlayer.module.css";
 import { FormGroup } from "react-bootstrap";
-
 import PlayerService from "../Service/PlayerService";
 
 class AddPlayerComponent extends React.Component {
@@ -17,8 +15,7 @@ class AddPlayerComponent extends React.Component {
       teamName: "",
       status: "",
       description: "",
-      id: this.props.match.params.id,
-      //  id: this.props.match.params.id,
+      userId: "",
     };
 
     this.OnAddClick = this.OnAddClick.bind(this);
@@ -33,8 +30,9 @@ class AddPlayerComponent extends React.Component {
   componentDidMount() {
     if (this.props.location.player) {
       this.setState({
-        id: this.props.location.user.id,
+        playerId: this.props.location.player.playerId,
       });
+      console.log(this.state.player);
     }
   }
 
@@ -72,6 +70,11 @@ class AddPlayerComponent extends React.Component {
     });
   };
 
+  ChangeIdHandler = (e) => {
+    this.setState({
+      userId: e.target.value,
+    });
+  };
   OnAddClick = (e) => {
     e.preventDefault();
 
@@ -83,19 +86,15 @@ class AddPlayerComponent extends React.Component {
       teamName: this.state.teamName,
       status: this.state.status,
       description: this.state.description,
-      id: this.props.match.params.id,
+      userId: this.state.userId,
     };
 
     console.log(player);
 
-    PlayerService.addPlayer(this.state.id, player).then((res) => {
+    PlayerService.addPlayer(this.state.userId, player).then((res) => {
       alert("Player Added Successful");
       this.props.history.push("/playerInfo");
-      //console.log(JSON.stringify(player));
     });
-    // .catch((res) => {
-    //   alert("Error occurs :(");
-    // });
   };
 
   render() {
@@ -103,6 +102,15 @@ class AddPlayerComponent extends React.Component {
       <div className={classes.MainPage}>
         <form className={classes.Login} onSubmit={this.OnAddClick}>
           <h1 className={classes.Title}>Add Player</h1>
+
+          <input
+            className={classes.InputField}
+            type="Number"
+            name="userId"
+            onChange={this.ChangeIdHandler}
+            value={this.state.userId}
+            placeholder="Enter User ID"
+          />
 
           <input
             className={classes.InputField}

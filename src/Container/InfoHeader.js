@@ -1,51 +1,43 @@
 import React, { Component } from "react";
-import classes from "../Component/Header.module.css";
+import classes from "../Container/InfoHeader.module.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import Clock from "react-digital-clock";
-class Header extends React.Component {
+
+class InfoHeader extends React.Component {
   render() {
     return (
       <div className={classes.parent}>
         <div className={classes.header}>
           <div className={classes.child1}>
-            <div className={classes.clock}>
-              <Clock />
-            </div>
+            <Clock />
           </div>
-          <div className={classes.child5}>
+          <div className={classes.childSearch}>
             <div className="input-group">
               <input
                 type="text"
                 className="form-control"
-                placeholder="Search this blog"
-                onChange={this.props.search}
+                placeholder="Search BY First Name"
+                onChange={this.props.SearchChange}
               />
               <div className="input-group-append">
                 <button
                   className="btn btn-secondary"
                   type="button"
-                  onClick={this.props.searchButtonClick}
+                  onClick={this.props.searchPlayer}
                 >
                   <SearchIcon />
                 </button>
               </div>
             </div>
           </div>
+
           <div className={classes.child2}>
             <input
               className={classes.Button}
               type="button"
               value="Add Player"
               onClick={this.props.addEvent}
-            />
-          </div>
-          <div className={classes.child3}>
-            <input
-              className={classes.Button}
-              type="button"
-              value="Show Player"
-              onClick={this.props.ShowEvent}
             />
           </div>
 
@@ -58,13 +50,10 @@ class Header extends React.Component {
               />
             </Link>
           </div>
-          <div className={classes.child7} onClick={this.props.ShowProfile}>
-            <i class="fa fa-user fa-3x" aria-hidden="true"></i>
-          </div>
         </div>
       </div>
     );
   }
 }
 
-export default Header;
+export default InfoHeader;

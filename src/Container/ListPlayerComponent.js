@@ -2,17 +2,18 @@ import React from "react";
 import PlayerService from "../Service/PlayerService";
 import "../App.css";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
-import Header from "./../Component/Header";
+import InfoHeader from "./../Container/InfoHeader";
 class ListPlayerComponent extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       players: [],
-      // url: "",
+      userId: "",
+      playerFirstName: "",
+      playerLastName: "",
     };
 
-    //   this.addplayer = this.addplayer.bind(this);
     this.editplayer = this.editplayer.bind(this);
     this.deleteplayer = this.deleteplayer.bind(this);
     this.viewplayer = this.viewplayer.bind(this);
@@ -24,39 +25,45 @@ class ListPlayerComponent extends React.Component {
     PlayerService.getPlayerInfo().then((res) => {
       this.setState({ players: res.data });
     });
+
+    PlayerService.searchByFirstName(this.state.playerFirstName).then((res) => {
+      this.setState({
+        players: res.data.filter(
+          (player) => player.playerFirstName === this.state.playerFirstName
+        ),
+      });
+    });
   }
+
+  onClickSearchName = (e) => {
+    e.preventDefault();
+    this.props.history.push(
+      `/search-by-firstname/${this.state.playerFirstName}`
+    );
+  };
+
+  onChangeSearch = (e) => {
+    this.setState({
+      playerFirstName: e.target.value,
+    });
+  };
 
   downloadPhoto(playerId) {
     PlayerService.downloadPhoto(playerId).then((res) => {
-      // this.setState({
-      //   players: this.state.players.filter(
-      //     (player) => player.playerId !== playerId,
       alert("Downloaded");
-      //   ),
-      // });
+
       this.props.history.push(`/download-player/${playerId}`);
     });
   }
 
   uploadPhoto(playerId) {
-    // PlayerService.uploadPhoto(playerId).then((res) => {
-    // alert("Photo Uploaded Successfully ;)");
     this.props.history.push(`/upload-photo/${playerId}`);
-    // });
   }
-  // addplayer(id) {
-  //   this.props.history.push(`/add-player/${id}`);
-  // }
 
   editplayer(playerId) {
     this.props.history.push(`/update-player/${playerId}`);
   }
 
-  // download(playerId) {
-  //   PlayerService.downloadPhoto(playerId).then((res) => {
-  //     alert("Downloaded-----");
-  //   });
-  // }
   deleteplayer(playerId) {
     PlayerService.deletePlayer(playerId).then((res) => {
       this.setState({
@@ -71,11 +78,19 @@ class ListPlayerComponent extends React.Component {
     this.props.history.push(`/view-player/${playerId}`);
   }
 
+  onclickAddPlayer = (e) => {
+    this.props.history.push(`/add-player${this.state.userId}`);
+  };
+
   render() {
     return (
       <>
         <div>
-          <Header />
+          <InfoHeader
+            addEvent={this.onclickAddPlayer}
+            searchPlayer={this.onClickSearchName}
+            SearchChange={this.onChangeSearch}
+          />
         </div>
         <div className="container">
           <div className="tablestyle">
@@ -151,7 +166,7 @@ class ListPlayerComponent extends React.Component {
                       <td>
                         <button
                           style={{ marginLeft: "10px" }}
-                          onClick={() => this.uploadPhoto(player.playerId)}
+                          onClick={() => this.downloadPhoto(player.playerId)}
                           className="btn btn-info"
                         >
                           Upload photo

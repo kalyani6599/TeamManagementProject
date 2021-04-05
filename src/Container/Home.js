@@ -1,11 +1,8 @@
 import React from "react";
-import PlayerService from "../Service/PlayerService";
 import team from "../Component/TeamInformation";
 import classes from "./HomePage.module.css";
 import "../Container/TeamCart.css";
-import TeamCard from "./TeamCard";
 import Header from "../Component/Header";
-import TeamSearchList from "./TeamSearchList";
 import "../App.css";
 import Footer from "../Component/Footer";
 
@@ -17,15 +14,16 @@ class Home extends React.Component {
       players: [],
       teamName: "",
       description: "",
-      id: "",
+      userId: "",
+      emailId: this.props.match.params.emailId,
     };
 
     this.onclickShowPlayer = this.onclickShowPlayer.bind(this);
     this.onclickAddPlayer = this.onclickAddPlayer.bind(this);
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.searchButton = this.searchButton.bind(this);
-    //this.onClickShowStatistics=this.onClickShowStatistics.bind(this);
     this.searchTeam = this.searchTeam.bind(this);
+    this.onClickShowProfile = this.onClickShowProfile.bind(this);
   }
 
   searchTeam = (e) => {
@@ -57,11 +55,21 @@ class Home extends React.Component {
     }
   };
 
-  onclickAddPlayer = (e) => {
-    this.props.history.push(`/add-player/${this.state.id}`);
-  };
   onclickShowPlayer = (e) => {
     this.props.history.push("/playerInfo");
+  };
+
+  onclickAddPlayer = (e) => {
+    this.props.history.push(`/add-player${this.state.userId}`);
+  };
+
+  onClickShowProfile = (e) => {
+    e.preventDefault();
+    this.setState({
+      emailId: this.props.match.params.emailId,
+    });
+
+    this.props.history.push(`/show-profile/${this.state.emailId}`);
   };
   render() {
     return (
@@ -70,15 +78,12 @@ class Home extends React.Component {
           <Header
             addEvent={this.onclickAddPlayer}
             ShowEvent={this.onclickShowPlayer}
-            //   ShowStatistic={this.onClickShowStatistics}
+            ShowProfile={this.onClickShowProfile}
             search={this.onChangeSearch}
             searchButtonClick={this.searchButton}
           />
         </div>
         <div className="row">
-          {/* <TeamCard searchTeam={this.OnClicksearchTeam} /> */}
-          {/* <HomePage /> */}
-
           <div className={classes.MainDiv}>
             {team.map((value) => {
               return (
