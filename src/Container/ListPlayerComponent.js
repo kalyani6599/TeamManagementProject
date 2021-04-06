@@ -19,27 +19,19 @@ class ListPlayerComponent extends React.Component {
     this.viewplayer = this.viewplayer.bind(this);
     this.downloadPhoto = this.downloadPhoto.bind(this);
     this.uploadPhoto = this.uploadPhoto.bind(this);
+    this.onChangeSearch = this.onChangeSearch.bind(this);
+    this.onClickSearchName = this.onClickSearchName.bind(this);
   }
 
   componentDidMount() {
     PlayerService.getPlayerInfo().then((res) => {
       this.setState({ players: res.data });
     });
-
-    PlayerService.searchByFirstName(this.state.playerFirstName).then((res) => {
-      this.setState({
-        players: res.data.filter(
-          (player) => player.playerFirstName === this.state.playerFirstName
-        ),
-      });
-    });
   }
 
   onClickSearchName = (e) => {
     e.preventDefault();
-    this.props.history.push(
-      `/search-by-firstname/${this.state.playerFirstName}`
-    );
+    this.props.history.push(`/search-name/${this.state.playerFirstName}`);
   };
 
   onChangeSearch = (e) => {
@@ -96,7 +88,7 @@ class ListPlayerComponent extends React.Component {
           <div className="tablestyle">
             <h2 className="text-center mt-4">Player List</h2>
             <ReactHTMLTableToExcel
-              className="btn btn-info"
+              className="btn btn-danger"
               table="tbname"
               filename="ReportExcel"
               sheet="Sheet"
@@ -166,7 +158,7 @@ class ListPlayerComponent extends React.Component {
                       <td>
                         <button
                           style={{ marginLeft: "10px" }}
-                          onClick={() => this.downloadPhoto(player.playerId)}
+                          onClick={() => this.uploadPhoto(player.playerId)}
                           className="btn btn-info"
                         >
                           Upload photo

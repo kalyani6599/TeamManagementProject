@@ -13,6 +13,7 @@ import TeamSearchList from "./Container/TeamSearchList";
 import DescriptionSearchList from "./Container/DescriptionSearchList";
 import Statistics from "./Component/Statistics";
 import Profile from "./Container/Profile";
+import SearchName from "./Container/SearchName";
 function App() {
   return (
     <BrowserRouter>
@@ -57,9 +58,9 @@ function App() {
             component={TeamSearchList}
           />
           <Route
-            path="/search-by-lastname/:playerLastName"
+            path="/search-name/:playerFirstName"
             exact={true}
-            component={TeamSearchList}
+            component={SearchName}
           />
           <Route
             path="/search-by-description/:description"

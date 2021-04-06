@@ -17,70 +17,22 @@ class UploadPhotoComponent extends Component {
   }
 
   onclickUpload = (e) => {
-    // alert("File uploaded successfully.");
-    // const file = new FormData();
-    // file.append("file", this.state.newfile);
-    // for (var fd of file) {
-    //   console.log(fd);
-    // }
-
     const formData = new FormData();
-    formData.append("file", this.state.newfile);
-    // for (let i = 0; i < e.target.files.length; i++) {
-    //   formData.append("file", e.target.files[i]);
-    // }
-    for (var fd of formData) {
-      console.log(fd);
-    }
+    formData.append("file", this.state.newfile, this.state.newfile.name);
 
-    // const config = {
-    //   headers: {
-    //     "content-type": "multipart/form-data",
-    //   },
-    // };
     PlayerService.uploadPhoto(this.state.playerId, formData).then((res) => {
-      if (res.ok) {
-        console.log(res.data);
-        this.setState({
-          photo: res.data[1].name,
-          file: res.data[1],
-        });
-        console.log(this.state.photo);
-        console.log(this.state.file);
-        alert("File uploaded successfully.");
-      }
+      // if (res.ok) {
+      alert("File uploaded successfully.");
+      // }
     });
   };
   onFileChangeHandler = (e) => {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append("file", this.state.newfile);
-    // // for (let i = 0; i < e.target.files.length; i++) {
-    // //   formData.append("file", e.target.files[i]);
-    // // }
-    // for (var fd of formData) {
-    //   console.log(fd);
-    // }
-
-    //
-    // PlayerService.uploadPhoto(this.state.playerId, formData, config).then(
-    //   (res) => {
-    //     if (res.ok) {
-    //       console.log(res.data);
-    //       alert("File uploaded successfully.");
-    //     }
-    //   }
-    // );
-
-    // for (var fd of file) {
-    //   console.log(fd);
-    // }
     this.setState({
       newfile: e.target.files[0],
     });
-    // console.log(this.state.file);
-    // console.log(e.target);
   };
+
   render() {
     return (
       <div>
