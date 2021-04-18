@@ -18,7 +18,7 @@ class Header extends React.Component {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Search this blog"
+                placeholder="Search by Team or Description"
                 onChange={this.props.search}
               />
               <div className="input-group-append">

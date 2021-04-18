@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import classes from "../Container/UpdatePlayer.module.css";
 import PlayerService from "../Service/PlayerService";
 import { FormGroup } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 class UpdatePlayerComponent extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +37,7 @@ class UpdatePlayerComponent extends Component {
         teamName: player.teamName,
         status: player.status,
         description: player.description,
+        fileName: player.fileName,
       });
     });
   }
@@ -86,6 +87,7 @@ class UpdatePlayerComponent extends Component {
       teamName: this.state.teamName,
       status: this.state.status,
       description: this.state.description,
+      fileName: this.state.fileName,
     };
 
     PlayerService.updatePlayer(this.state.playerId, player).then((res) => {
@@ -101,91 +103,106 @@ class UpdatePlayerComponent extends Component {
       <div>
         <div className={classes.MainPage}>
           <form className={classes.Login} onSubmit={this.OnUpdateClick}>
-            <h1 className={classes.Title}>Upadte Player</h1>
+            <h1 className={classes.Title}>Update Player</h1>
 
-            <input
-              className={classes.InputField}
-              type="text"
-              name="playerFirstName"
-              onChange={this.ChangeFirstNameHandler}
-              value={this.state.playerFirstName}
-              placeholder="Enter First Name"
-            />
+            <div className="dis">
+              <label for="playerFirstName">First Name</label>
+              <input
+                className={classes.InputField}
+                type="text"
+                name="playerFirstName"
+                onChange={this.ChangeFirstNameHandler}
+                value={this.state.playerFirstName}
+                placeholder="Enter First Name"
+              />
 
-            <input
-              className={classes.InputField}
-              type="text"
-              name="playerLastName"
-              onChange={this.ChangeLastNameHandler}
-              value={this.state.playerLastName}
-              placeholder="Enter Last Name"
-            />
+              <label for="playerLastName">Last Name</label>
+              <input
+                className={classes.InputField}
+                type="text"
+                name="playerLastName"
+                onChange={this.ChangeLastNameHandler}
+                value={this.state.playerLastName}
+                placeholder="Enter Last Name"
+              />
+              <label for="price">Price</label>
+              <input
+                className={classes.InputField}
+                type="text"
+                name="price"
+                onChange={this.ChangePriceHandler}
+                value={this.state.price}
+                placeholder="Enter Price in Cr."
+              />
 
-            <input
-              className={classes.InputField}
-              type="text"
-              name="price"
-              onChange={this.ChangePriceHandler}
-              value={this.state.price}
-              placeholder="Enter Price in Cr."
-            />
+              <FormGroup>
+                <label for="teamName">Team Name</label>
 
-            <FormGroup>
-              <label for="teamName">Team Name</label>
+                <select
+                  name="teamName"
+                  className="form-control"
+                  value={this.state.teamName}
+                  onChange={this.ChangeTeamNamehandler}
+                >
+                  {/* <option></option> */}
+                  <option>MI</option>
+                  <option>CSK</option>
+                  <option>RCB</option>
+                  <option>KKR</option>
+                  <option>DC</option>
+                  <option>SH</option>
+                  <option>PK</option>
+                  <option>RR</option>
+                </select>
+              </FormGroup>
 
-              <select
-                name="teamName"
-                className="form-control"
-                value={this.state.teamName}
-                onChange={this.ChangeTeamNamehandler}
-              >
-                {/* <option></option> */}
-                <option>MI</option>
-                <option>CSK</option>
-                <option>RCB</option>
-                <option>KKR</option>
-                <option>DC</option>
-                <option>SH</option>
-                <option>PK</option>
-                <option>RR</option>
-              </select>
-            </FormGroup>
+              <FormGroup>
+                <label for="status">Player Status</label>
+                <select
+                  name="status"
+                  className="form-control"
+                  value={this.state.status}
+                  onChange={this.ChangeStatushandler}
+                >
+                  {/* <option></option> */}
+                  <option value="ON BENCH">On Bench</option>
+                  <option value="PLAYING">Playing</option>
+                </select>
+              </FormGroup>
 
-            <FormGroup>
-              <label for="status">Player Status</label>
-              <select
-                name="status"
-                className="form-control"
-                value={this.state.status}
-                onChange={this.ChangeStatushandler}
-              >
-                {/* <option></option> */}
-                <option value="ON_BENCH">On Bench</option>
-                <option value="PLAYING">Playing</option>
-              </select>
-            </FormGroup>
+              <FormGroup>
+                <label for="description">Player Description</label>
+                <select
+                  name="description"
+                  className="form-control"
+                  value={this.state.description}
+                  onChange={this.Changedescriptionhandler}
+                >
+                  {/* <option></option> */}
+                  <option>All Rounder</option>
+                  <option>Bowler</option>
+                  <option>Batsman</option>
+                </select>
+              </FormGroup>
+              <label for="fileName">Photo</label>
+              <input
+                className={classes.InputField}
+                type="text"
+                name="fileName"
+                value={this.state.fileName}
+                disabled
+              />
 
-            <FormGroup>
-              <label for="description">Player Description</label>
-              <select
-                name="description"
-                className="form-control"
-                value={this.state.description}
-                onChange={this.Changedescriptionhandler}
-              >
-                {/* <option></option> */}
-                <option>All Rounder</option>
-                <option>Bowler</option>
-                <option>Batsman</option>
-              </select>
-            </FormGroup>
-
-            <input
-              className={classes.Button}
-              type="submit"
-              value="Update player"
-              onClick={this.OnUpdateClick}
-            />
+              <input
+                className={classes.Button}
+                type="submit"
+                value="Update player"
+                onClick={this.OnUpdateClick}
+              />
+              <Link to="/playerInfo">
+                <input className={classes.Button1} type="submit" value="Back" />
+              </Link>
+            </div>
           </form>
         </div>
       </div>

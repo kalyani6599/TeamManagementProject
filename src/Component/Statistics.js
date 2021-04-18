@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Pie } from "react-chartjs-2";
 import "../Component/Statistics.css";
+import { Link } from "react-router-dom";
 class Statistics extends Component {
   constructor(props) {
     super(props);
@@ -85,6 +86,9 @@ class Statistics extends Component {
   render() {
     return (
       <div className="main">
+        <Link to="/playerInfo">
+          <input className="button1" type="submit" value="Back" />
+        </Link>
         <div className="child">
           <h2 className="chart"> Description Ratio</h2>
           <Pie

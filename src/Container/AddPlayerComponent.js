@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../Container/AddPlayer.module.css";
 import { FormGroup } from "react-bootstrap";
 import PlayerService from "../Service/PlayerService";
-
+import { Link } from "react-router-dom";
 class AddPlayerComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -169,7 +169,7 @@ class AddPlayerComponent extends React.Component {
               onChange={this.ChangeStatushandler}
             >
               <option></option>
-              <option value="ON_BENCH">On Bench</option>
+              <option value="ON BENCH">On Bench</option>
               <option value="PLAYING">Playing</option>
             </select>
           </FormGroup>
@@ -183,9 +183,9 @@ class AddPlayerComponent extends React.Component {
               onChange={this.Changedescriptionhandler}
             >
               <option></option>
-              <option value="ALL_ROUNDER">All Rounder</option>
-              <option value="BOWLER">Bowler</option>
-              <option value="BATSMAN">Batsman</option>
+              <option value="All Rounder">All Rounder</option>
+              <option value="Bowler">Bowler</option>
+              <option value="Batsman">Batsman</option>
             </select>
           </FormGroup>
 
@@ -195,6 +195,9 @@ class AddPlayerComponent extends React.Component {
             value="Add player"
             onClick={this.OnAddClick}
           />
+          <Link to="/playerInfo">
+            <input className={classes.Button1} type="submit" value="Back" />
+          </Link>
         </form>
       </div>
     );

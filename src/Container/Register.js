@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import classes from "../Container/Register.module.css";
 import RegisterService from "../Service/RegisterService";
 
@@ -79,49 +80,56 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div className={classes.MainPage}>
-        <form className={classes.Login} onSubmit={this.onRegisterClick}>
-          <h1>Sign UP</h1>
+      <div className="container p-5">
+        {/* <div className={classes.MainPage}> */}
+        <div className={classes.formdata}>
+          <form className={classes.Login} onSubmit={this.onRegisterClick}>
+            <h1>Sign UP</h1>
 
-          <input
-            className={classes.InputField}
-            type="text"
-            name="userName"
-            onChange={this.ChangeNameHandler}
-            value={this.state.userName}
-            placeholder="Enter Username"
-          />
+            <input
+              className={classes.InputField}
+              type="text"
+              name="userName"
+              onChange={this.ChangeNameHandler}
+              value={this.state.userName}
+              placeholder="Enter Username"
+            />
 
-          <input
-            className={classes.InputField}
-            type="email"
-            name="emailId"
-            onChange={this.ChangeEmailHandler}
-            value={this.state.emailId}
-            placeholder="Enter Email Id"
-          />
+            <input
+              className={classes.InputField}
+              type="email"
+              name="emailId"
+              onChange={this.ChangeEmailHandler}
+              value={this.state.emailId}
+              placeholder="Enter Email Id"
+            />
 
-          <input
-            className={classes.InputField}
-            type="tel"
-            name="phone"
-            onChange={this.ChangePhoneHandler}
-            value={this.state.phone}
-            placeholder="Enter Mobile Number"
-          />
+            <input
+              className={classes.InputField}
+              type="tel"
+              name="phone"
+              onChange={this.ChangePhoneHandler}
+              value={this.state.phone}
+              placeholder="Enter Mobile Number"
+            />
 
-          <input
-            className={classes.InputField}
-            type="password"
-            name="password"
-            onChange={this.ChangePasswordHandler}
-            value={this.state.password}
-            placeholder="Enter Password"
-          />
+            <input
+              className={classes.InputField}
+              type="password"
+              name="password"
+              onChange={this.ChangePasswordHandler}
+              value={this.state.password}
+              placeholder="Enter Password"
+            />
 
-          <input className={classes.Button} type="submit" value="Register" />
-        </form>
+            <input className={classes.Button} type="submit" value="Register" />
+            <Link to="/">
+              <input className={classes.Button1} type="submit" value="Back" />
+            </Link>
+          </form>
+        </div>
       </div>
+      // </div>
     );
   }
 }

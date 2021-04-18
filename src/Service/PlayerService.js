@@ -30,8 +30,8 @@ class PlayerService {
   searchByDescription(description) {
     return axios.get(BASE_URL + "/player/searchByDescription/" + description);
   }
-  uploadPhoto(playerId) {
-    return axios.put(BASE_URL + "/player/upload/" + playerId);
+  uploadPhoto(photo) {
+    return axios.put(BASE_URL + "/player/upload/", photo);
   }
   downloadPhoto(playerId) {
     return axios.get(BASE_URL + "/player/download/" + playerId);

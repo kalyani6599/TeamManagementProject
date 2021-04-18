@@ -36,7 +36,7 @@ class ViewPlayerComponent extends Component {
             </div>
             <div className="row">
               <label>Price : </label>&nbsp;
-              <div>{this.state.player.price}</div>
+              <div>{this.state.player.price} &nbsp;Cr</div>
             </div>
             <div className="row">
               <label>Team Name : </label>&nbsp;

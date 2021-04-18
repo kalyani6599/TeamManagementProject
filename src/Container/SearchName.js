@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PlayerService from "../Service/PlayerService";
 import SearchBar from "../Component/SearchBar";
 import "../App.css";
+import "../Component/Statistics.css";
+import { Link } from "react-router-dom";
 class TeamSearchList extends Component {
   constructor(props) {
     super(props);
@@ -95,18 +97,26 @@ class TeamSearchList extends Component {
   render() {
     return (
       <>
-        {/* <div className="topBar">
-          <SearchBar
-            searchPlayer={this.onClickSearchName}
-            SearchChange={this.onChangeSearch}
-          />
-        </div> */}
         <div className="container">
-          <h2 className="text-center mt-4">Player List</h2>
-          <div className="form-group"></div>
-          <div className="row">
-            <table className="table table-striped table-bordered table-color">
-              <thead>
+          <div className="d-inline-flex flex-row flex-grow-1">
+            <Link to="/playerInfo">
+              <input
+                className="button1"
+                type="submit"
+                value="Back"
+                style={{ marginRight: "300px" }}
+              />
+            </Link>
+            <h2 className="text-center text-lg mt-4">Player List</h2>
+          </div>
+
+          <div className="form-group "></div>
+          <div className="row   ">
+            <table
+              id="tbname"
+              className="table  table-hover table-bordered table-color table-md table-responsive"
+            >
+              <thead className="table-dark">
                 <tr>
                   <th>Player Id</th>
                   <th>First Name</th>
@@ -122,7 +132,7 @@ class TeamSearchList extends Component {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="table-light text-center">
                 {this.state.players.map((player) => (
                   <tr key={player.playerId}>
                     <td>{player.playerId}</td>

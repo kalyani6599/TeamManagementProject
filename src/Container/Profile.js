@@ -1,6 +1,7 @@
+import classes from "../Container/Login.module.css";
 import React, { Component } from "react";
 import RegisterService from "../Service/RegisterService";
-
+import { Link } from "react-router-dom";
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +40,15 @@ class Profile extends Component {
               <div className="row">
                 <label>Phone Number : </label>&nbsp;
                 <div>{this.state.user.phone}</div>
+              </div>
+              <div className="row">
+                <Link to={`/home/${this.state.emailId}`}>
+                  <input
+                    className={classes.Button1}
+                    type="submit"
+                    value="Back"
+                  />
+                </Link>
               </div>
             </div>
           </div>

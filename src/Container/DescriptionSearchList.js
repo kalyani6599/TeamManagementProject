@@ -18,7 +18,7 @@ class FnameSearchList extends Component {
   }
 
   componentDidMount() {
-    PlayerService.serachByDescription(this.state.description).then((res) => {
+    PlayerService.searchByDescription(this.state.description).then((res) => {
       this.setState({
         players: res.data.filter(
           (player) => player.description === this.state.description

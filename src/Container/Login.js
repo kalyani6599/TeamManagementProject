@@ -2,6 +2,7 @@ import React from "react";
 import classes from "../Container/Login.module.css";
 import RegisterService from "../Service/RegisterService";
 import Footer from "./../Component/Footer";
+import { Link } from "react-router-dom";
 class Login extends React.Component {
   userData;
   constructor(props) {
@@ -58,49 +59,58 @@ class Login extends React.Component {
     return (
       <>
         <h1 className={classes.head}> Team Management Application</h1>
-        <div className={classes.MainPage}>
-          <div className="row">
-            <div className={classes.parent}>
-              <div className="col-md-6">
-                <form className={classes.Login} onSubmit={this.onLoginClick}>
-                  <h1>Sign In</h1>
+        <div className={classes.Home}>
+          <div className={classes.MainPage}>
+            <div className="row">
+              <div className={classes.parent}>
+                <div className="col-md-6 offset-3">
+                  <form className={classes.Login} onSubmit={this.onLoginClick}>
+                    <h1>Sign In</h1>
 
-                  <input
-                    className={classes.InputField}
-                    type="email"
-                    name="emailId"
-                    onChange={this.onChangeMailHandler}
-                    value={this.state.emailId}
-                    placeholder="Enter Email Id"
+                    <input
+                      className={classes.InputField}
+                      type="email"
+                      name="emailId"
+                      onChange={this.onChangeMailHandler}
+                      value={this.state.emailId}
+                      placeholder="Enter Email Id"
+                    />
+
+                    <input
+                      className={classes.InputField}
+                      type="password"
+                      name="password"
+                      onChange={this.onChangePassHandler}
+                      value={this.state.password}
+                      placeholder="Enter Password"
+                    />
+
+                    <input
+                      className={classes.Button}
+                      type="submit"
+                      value="Login"
+                    />
+                    <Link to="/register">
+                      <input
+                        className={classes.Button1}
+                        type="submit"
+                        value="Register"
+                      />
+                    </Link>
+                  </form>
+                </div>
+
+                {/* <div className="col-md-6">
+                  <img
+                    style={{ height: "75%" }}
+                    classname={classes.Image}
+                    src="https://www.insidesport.co/wp-content/uploads/2019/12/Banner.jpg"
                   />
-
-                  <input
-                    className={classes.InputField}
-                    type="password"
-                    name="password"
-                    onChange={this.onChangePassHandler}
-                    value={this.state.password}
-                    placeholder="Enter Password"
-                  />
-
-                  <input
-                    className={classes.Button}
-                    type="submit"
-                    value="Login"
-                  />
-                </form>
-              </div>
-
-              <div className="col-md-6">
-                <img
-                  style={{ height: "75%" }}
-                  classname={classes.Image}
-                  src="https://www.insidesport.co/wp-content/uploads/2019/12/Banner.jpg"
-                />
+                </div> */}
               </div>
             </div>
+            <Footer />
           </div>
-          <Footer />
         </div>
       </>
     );

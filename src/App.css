@@ -59,17 +59,73 @@ button.btn.btn-secondary {
 }
 
 tbody {
-  background-color: #f7eaea;
+  /* background-color: #f7eaea; */
 }
 th {
-  background-color: #006d77;
+  /* background-color: #006d77; */
   color: white;
 }
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #0a0a0a;
+  border: 1px solid #868585;
 }
 
 .topbar {
   width: 600px;
+}
+
+a:hover {
+  /* background-color: rgb(27, 32, 43); */
+  text-decoration: none;
+  color: red;
+}
+
+.photoPage {
+  /* height: 500px; */
+  width: -webkit-fill-available;
+  padding: 30px;
+  margin-left: 340px;
+}
+
+.button {
+  display: inline-block;
+
+  width: 150px;
+  border-radius: 30px;
+  letter-spacing: 0.2em;
+  padding: 10px;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  background-color: rgb(47, 184, 143);
+
+  color: white;
+
+  border: none;
+
+  outline: none;
+
+  cursor: pointer;
+
+  align-self: center;
+
+  height: 45px;
+
+  margin: 40px auto;
+  display: list-item;
+}
+
+.headingTitle {
+  background-color: bisque;
+  padding: 10px;
+  letter-spacing: 1px;
+  font-size: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 500;
+  margin: 20px;
+  border: 4px groove #006d77;
 }

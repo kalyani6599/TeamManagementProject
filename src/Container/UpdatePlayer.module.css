@@ -1,24 +1,22 @@
-.MainPage {
+/* .MainPage {
   height: 100%;
-}
+} */
 
 .Login {
   width: 100%;
   margin-top: 100px;
   max-width: 450px;
+  border-radius: 7px;
+  border: 5px groove #504e4e;
 
-  height: 650px;
-
-  border-radius: 6px;
-  border: 2px solid #8dc5b1;
-
-  background-color: rgb(252, 252, 252);
-
+  border: 3px groove #006d77;
+  border-radius: 15px;
   margin: 0 auto;
 
   padding: 32px;
 
   box-sizing: border-box;
+  background-color: rgb(252, 252, 252);
 
   display: flex;
 
@@ -28,12 +26,17 @@
 }
 
 .Login h1 {
-  margin: 0;
-
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  background-color: beige;
   letter-spacing: 1px;
-
+  font-size: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 500;
-
+  border: 4px groove #006d77;
   margin-bottom: 24px;
 }
 
@@ -42,13 +45,14 @@
 
   padding-top: 18px;
 
+  padding: 5px;
   font-size: 14px;
 
   box-sizing: border-box;
 
   border: 0;
 
-  margin-top: 2px;
+  /* margin-top: 2px; */
 
   border-bottom: 1.5px solid #141111;
 
@@ -59,13 +63,23 @@
   border-radius: 1px;
 }
 
-.Button {
+.Title {
+  text-align: center;
+  font-family: serif;
+  font-weight: 700 !important;
+  border: 4px groove rgb(40, 129, 95);
+}
+label {
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+}
+.Button1 {
   display: inline-block;
 
   width: 150px;
   border-radius: 30px;
-
-  padding: 5px;
+  letter-spacing: 0.2em;
+  padding: 10px;
 
   font-size: 15px;
 
@@ -73,7 +87,7 @@
 
   letter-spacing: 1px;
 
-  background-color: #20b883;
+  background-color: black;
 
   color: white;
 
@@ -85,14 +99,39 @@
 
   align-self: center;
 
-  height: 55px;
+  height: 45px;
 
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: auto;
+  display: list-item;
 }
-.Title {
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 200;
-  border: 2px solid rgb(40, 129, 95);
+.Button {
+  display: inline-block;
+
+  width: 150px;
+  border-radius: 30px;
+  letter-spacing: 0.2em;
+  padding: 10px;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  background-color: black;
+
+  color: white;
+
+  border: none;
+
+  outline: none;
+
+  cursor: pointer;
+
+  align-self: center;
+
+  height: 45px;
+  margin: 30px auto;
+  display: list-item;
+  /* margin: 20px 55px; */
 }

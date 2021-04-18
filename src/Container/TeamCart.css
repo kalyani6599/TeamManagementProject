@@ -22,7 +22,7 @@
   flex: 0 0 250px;
   padding: 2px;
   margin: 15px;
-  border: 1px solid rgb(15, 14, 14);
+  border: 5px groove rgb(15, 14, 14);
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }
 img.card-img-top.img {

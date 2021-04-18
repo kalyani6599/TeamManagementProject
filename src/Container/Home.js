@@ -41,9 +41,9 @@ class Home extends React.Component {
 
   onChangeSearch = (e) => {
     if (
-      e.target.value === "BATSMAN" ||
-      e.target.value === "ALL_ROUNDER" ||
-      e.target.value === "BOWLER"
+      e.target.value === "Batsman" ||
+      e.target.value === "All Rounder" ||
+      e.target.value === "Bowler"
     ) {
       this.setState({
         description: e.target.value,

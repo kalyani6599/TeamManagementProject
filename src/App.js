@@ -19,8 +19,8 @@ function App() {
     <BrowserRouter>
       <div className="background">
         <Switch>
-          <Route path="/" exact={true} component={Register} />
-          <Route path="/login" exact={true} component={Login} />
+          <Route path="/register" exact={true} component={Register} />
+          <Route path="/" exact={true} component={Login} />
           <Route path="/home/:emailId" exact={true} component={Home} />
           <Route
             path="/playerInfo"

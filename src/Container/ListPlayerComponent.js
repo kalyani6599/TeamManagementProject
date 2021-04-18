@@ -3,6 +3,8 @@ import PlayerService from "../Service/PlayerService";
 import "../App.css";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import InfoHeader from "./../Container/InfoHeader";
+
+import { Link } from "react-router-dom";
 class ListPlayerComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class ListPlayerComponent extends React.Component {
     this.editplayer = this.editplayer.bind(this);
     this.deleteplayer = this.deleteplayer.bind(this);
     this.viewplayer = this.viewplayer.bind(this);
-    this.downloadPhoto = this.downloadPhoto.bind(this);
+    // this.downloadPhoto = this.downloadPhoto.bind(this);
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onClickSearchName = this.onClickSearchName.bind(this);
@@ -40,13 +42,15 @@ class ListPlayerComponent extends React.Component {
     });
   };
 
-  downloadPhoto(playerId) {
-    PlayerService.downloadPhoto(playerId).then((res) => {
-      alert("Downloaded");
+  // downloadPhoto(playerId) {
+  //   PlayerService.downloadPhoto(playerId).then((res) => {
+  //     alert("Downloaded");
 
-      this.props.history.push(`/download-player/${playerId}`);
-    });
-  }
+  //     // this.props.history.push(
+  //     //   `http://localhost:8080/api/player/download/${playerId}`
+  //     // );
+  //   });
+  // }
 
   uploadPhoto(playerId) {
     this.props.history.push(`/upload-photo/${playerId}`);
@@ -88,20 +92,28 @@ class ListPlayerComponent extends React.Component {
           <div className="tablestyle">
             <h2 className="text-center mt-4">Player List</h2>
             <ReactHTMLTableToExcel
-              className="btn btn-danger"
+              className="btn btn-lg btn-danger rounded-rounded-pill"
               table="tbname"
               filename="ReportExcel"
               sheet="Sheet"
               id="Export"
               buttonText="Export excel"
             />
-            <div className="form-group"></div>
-            <div className="row">
+            <Link to="/playerInfo">
+              <input
+                className="button1"
+                type="submit"
+                value="Back"
+                style={{ marginLeft: "40px" }}
+              />
+            </Link>
+            <div className="form-group "></div>
+            <div className="row   ">
               <table
                 id="tbname"
-                className="table table-striped table-bordered table-color"
+                className="table  table-hover table-bordered table-color table-md table-responsive"
               >
-                <thead>
+                <thead className="table-dark">
                   <tr>
                     <th>Player Id</th>
                     <th>First Name</th>
@@ -110,14 +122,14 @@ class ListPlayerComponent extends React.Component {
                     <th>Team Name</th>
                     <th>Player Status</th>
                     <th>Description</th>
-                    <th>Photo</th>
+                    <th>PhotoName</th>
                     <th colSpan="4" style={{ textAlign: "center" }}>
                       Actions
                     </th>
                   </tr>
                 </thead>
 
-                <tbody>
+                <tbody className="table-light text-center">
                   {this.state.players.map((player) => (
                     <tr key={player.playerId}>
                       <td>{player.playerId}</td>
@@ -127,11 +139,17 @@ class ListPlayerComponent extends React.Component {
                       <td>{player.teamName}</td>
                       <td>{player.status}</td>
                       <td>{player.description}</td>
-                      <td onClick={this.downloadPhoto}>{player.photos}</td>
+                      <td>
+                        <a
+                          href={`http://localhost:8080/api/player/download/${player.playerId}`}
+                        >
+                          {player.fileName}
+                        </a>
+                      </td>
                       <td>
                         <button
                           onClick={() => this.editplayer(player.playerId)}
-                          className="btn btn-info"
+                          className="btn btn-primary"
                         >
                           Edit
                         </button>
@@ -159,7 +177,7 @@ class ListPlayerComponent extends React.Component {
                         <button
                           style={{ marginLeft: "10px" }}
                           onClick={() => this.uploadPhoto(player.playerId)}
-                          className="btn btn-info"
+                          className="btn btn-dark"
                         >
                           Upload photo
                         </button>

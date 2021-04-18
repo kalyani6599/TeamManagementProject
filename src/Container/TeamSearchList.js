@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PlayerService from "../Service/PlayerService";
 import SearchBar from "../Component/SearchBar";
 import "../App.css";
+
+import { Link } from "react-router-dom";
 class TeamSearchList extends Component {
   constructor(props) {
     super(props);
@@ -94,12 +96,22 @@ class TeamSearchList extends Component {
             SearchChange={this.onChangeSearch}
           />
         </div>
+        <Link to="/playerInfo">
+          <input
+            className="button1"
+            type="submit"
+            value="Back"
+            style={{ marginLeft: "100px" }}
+          />
+        </Link>
         <div className="container">
-          <h2 className="text-center mt-4">Player List</h2>
-          <div className="form-group"></div>
+          <div className="form-group "></div>
           <div className="row">
-            <table className="table table-striped table-bordered table-color">
-              <thead>
+            <table
+              id="tbname"
+              className="table  table-hover table-bordered table-color table-md table-responsive"
+            >
+              <thead className="table-dark">
                 <tr>
                   <th>Player Id</th>
                   <th>First Name</th>
@@ -115,7 +127,7 @@ class TeamSearchList extends Component {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="table-light text-center">
                 {this.state.players.map((player) => (
                   <tr key={player.playerId}>
                     <td>{player.playerId}</td>
