@@ -129,3 +129,8 @@ a:hover {
   margin: 20px;
   border: 4px groove #006d77;
 }
+
+.row.home-row {
+  margin-left: 0px;
+  margin-right: 0px;
+}

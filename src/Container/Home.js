@@ -83,7 +83,7 @@ class Home extends React.Component {
             searchButtonClick={this.searchButton}
           />
         </div>
-        <div className="row">
+        <div className="row home-row">
           <div className={classes.MainDiv}>
             {team.map((value) => {
               return (
