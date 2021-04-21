@@ -16,6 +16,8 @@ class ListPlayerComponent extends React.Component {
       playerLastName: "",
     };
 
+    console.log(this.state.emailId);
+
     this.editplayer = this.editplayer.bind(this);
     this.deleteplayer = this.deleteplayer.bind(this);
     this.viewplayer = this.viewplayer.bind(this);
@@ -27,8 +29,9 @@ class ListPlayerComponent extends React.Component {
 
   componentDidMount() {
     PlayerService.getPlayerInfo().then((res) => {
-      this.setState({ players: res.data });
+      this.setState({ players: res.data});
     });
+
   }
 
   onClickSearchName = (e) => {
@@ -99,7 +102,7 @@ class ListPlayerComponent extends React.Component {
               id="Export"
               buttonText="Export excel"
             />
-            <Link to="/playerInfo">
+            <Link to={`/playerInfo`}>
               <input
                 className="button1"
                 type="submit"

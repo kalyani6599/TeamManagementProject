@@ -15,6 +15,7 @@ class FnameSearchList extends Component {
     this.deleteplayer = this.deleteplayer.bind(this);
     this.viewplayer = this.viewplayer.bind(this);
     this.download = this.download.bind(this);
+    // this.uploadPhoto=this.uploadPhoto.bind(this);
   }
 
   componentDidMount() {
@@ -27,12 +28,10 @@ class FnameSearchList extends Component {
     });
   }
 
-  uploadPhoto(playerId) {
-    PlayerService.uploadPhoto(playerId).then((res) => {
-      // alert("Photo Uploaded Successfully ;)");
-      this.props.history.push(`/upload-photo/${playerId}`);
-    });
-  }
+  // uploadPhoto(playerId) {
+  //   this.props.history.push(`/upload-photo/${playerId}`);
+  // }
+
   addplayer(id) {
     this.props.history.push(`/add-player/${id}`);
   }
@@ -77,7 +76,7 @@ class FnameSearchList extends Component {
                 <th>Player Status</th>
                 <th>Description</th>
                 <th>Photo</th>
-                <th colSpan="4" style={{ textAlign: "center" }}>
+                <th colSpan="3" style={{ textAlign: "center" }}>
                   Actions
                 </th>
               </tr>
@@ -121,7 +120,7 @@ class FnameSearchList extends Component {
                       View
                     </button>
                   </td>
-                  <td>
+                  {/* <td>
                     <button
                       style={{ marginLeft: "10px" }}
                       onClick={() => this.uploadPhoto(player.playerId)}
@@ -129,7 +128,7 @@ class FnameSearchList extends Component {
                     >
                       Upload photo
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

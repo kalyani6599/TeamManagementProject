@@ -31,9 +31,9 @@ class Statistics extends Component {
       });
 
       Description.forEach((Item) => {
-        if (Item == "ALL_ROUNDER") {
+        if (Item === "All Rounder") {
           count = count + 1;
-        } else if (Item == "BATSMAN") {
+        } else if (Item === "Batsman") {
           count1 = count1 + 1;
         } else {
           count2 = count2 + 1;
@@ -41,7 +41,7 @@ class Statistics extends Component {
       });
 
       PlayingStatus.forEach((Item) => {
-        if (Item == "ON_BENCH") {
+        if (Item === "ON BENCH") {
           cs = cs + 1;
         } else {
           cs1 = cs1 + 1;

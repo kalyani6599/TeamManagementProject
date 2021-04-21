@@ -69,7 +69,7 @@ class Register extends React.Component {
       .then((res) => {
         alert("Register Successful!");
 
-        this.props.history.push("/login");
+        this.props.history.push("/");
         console.log(JSON.stringify(user));
         console.log(user);
       })

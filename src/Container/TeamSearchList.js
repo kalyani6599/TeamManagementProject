@@ -54,12 +54,12 @@ class TeamSearchList extends Component {
     });
   };
 
-  uploadPhoto(playerId) {
-    PlayerService.uploadPhoto(playerId).then((res) => {
-      // alert("Photo Uploaded Successfully ;)");
-      this.props.history.push(`/upload-photo/${playerId}`);
-    });
-  }
+  // uploadPhoto(playerId) {
+  //   PlayerService.uploadPhoto(playerId).then((res) => {
+  //     // alert("Photo Uploaded Successfully ;)");
+  //     this.props.history.push(`/upload-photo/${playerId}`);
+  //   });
+  // }
   addplayer(id) {
     this.props.history.push(`/add-player/${id}`);
   }
@@ -121,7 +121,7 @@ class TeamSearchList extends Component {
                   <th>Player Status</th>
                   <th>Description</th>
                   <th>Photo</th>
-                  <th colSpan="4" style={{ textAlign: "center" }}>
+                  <th colSpan="3" style={{ textAlign: "center" }}>
                     Actions
                   </th>
                 </tr>
@@ -165,7 +165,7 @@ class TeamSearchList extends Component {
                         View
                       </button>
                     </td>
-                    <td>
+                    {/* <td>
                       <button
                         style={{ marginLeft: "10px" }}
                         onClick={() => this.uploadPhoto(player.playerId)}
@@ -173,7 +173,7 @@ class TeamSearchList extends Component {
                       >
                         Upload photo
                       </button>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>
