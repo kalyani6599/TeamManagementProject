@@ -10,7 +10,7 @@ class Statistics extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:8080/api/playerInfo").then((res) => {
+    axios.get("http://localhost:8080/api/player/playerInfo").then((res) => {
       const ipl = res.data;
       let Description = [];
       let PlayingStatus = [];

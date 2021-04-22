@@ -4,7 +4,7 @@ const BASE_URL = "http://localhost:8080/api";
 
 class PlayerService {
   getPlayerInfo() {
-    return axios.get(BASE_URL + "/playerInfo");
+    return axios.get(BASE_URL + "/player/playerInfo");
   }
   getPlayerById(playerId) {
     return axios.get(BASE_URL + "/player/searchById/" + playerId);
